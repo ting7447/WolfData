@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Item]
+(
+	[ItemId] VARCHAR(20) NOT NULL PRIMARY KEY, 
+    [Name] NVARCHAR(50) NOT NULL, 
+    [Unit] VARCHAR(10) NOT NULL, 
+    [CreateDate] DATETIME NOT NULL,
+    [ModifyDate] DATETIME NOT NULL
+)

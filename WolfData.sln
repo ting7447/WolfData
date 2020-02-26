@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "WolfDataService", "WolfData\WolfDataService.ccproj", "{420E2C45-2A1B-40B9-8184-86E3B814DD36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebRole1", "WebRole1\WebRole1.csproj", "{3D510A01-231D-4114-9707-1E6078EF5C9C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{420E2C45-2A1B-40B9-8184-86E3B814DD36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{420E2C45-2A1B-40B9-8184-86E3B814DD36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{420E2C45-2A1B-40B9-8184-86E3B814DD36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{420E2C45-2A1B-40B9-8184-86E3B814DD36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D510A01-231D-4114-9707-1E6078EF5C9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D510A01-231D-4114-9707-1E6078EF5C9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D510A01-231D-4114-9707-1E6078EF5C9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D510A01-231D-4114-9707-1E6078EF5C9C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7ADAB392-D4E8-4839-A88B-1A1B3B6CEB9D}
+	EndGlobalSection
+EndGlobal
