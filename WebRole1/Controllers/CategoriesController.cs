@@ -8,98 +8,35 @@ using WebRole1.Models;
 
 namespace WebRole1.Controllers
 {
-    public class CategoriesController : ApiController
+    public partial class NorthWind
     {
-
-        [HttpPost]
-        public MVCResult<Categories> GetCategories(int? categoryId)
+        public class CategoriesController : ApiController
         {
-            var result = new MVCResult<Categories>();
-            try
+
+            [HttpPost]
+            public MVCResult<Categories> GetCategories(Categories model)
             {
-                NorthWindEntities entity = new NorthWindEntities();
-                IQueryable<Categories> query;
-                DbSet<Categories> db = entity.Categories;
-               
-                if (categoryId != null)
-                {
-                    query = db.Where(x => x.CategoryID == categoryId);
-                }
-                else
-                {
-                    query = db;
-                }
-                
-                result.PayLoad = query.ToList();
-                return result;
+                return CRUD<Categories>.Get(model);
             }
-            catch(Exception ex)
+
+            [HttpPost]
+            public MVCResult<string> InsertCategories(Categories model)
             {
-                result.SetError(ex.Message);
-                return result;
+                return CRUD<Categories>.Add(model);
+            }
+
+            [HttpPost]
+            public MVCResult<string> UpdateCategories(Categories model)
+            {
+                return CRUD<Categories>.Update(model);
+            }
+
+            [HttpPost]
+            public MVCResult<string> DeleteCategories(int categoryId)
+            {
+                return CRUD<Categories>.Delete(categoryId);
             }
         }
-
-        [HttpPost]
-        public MVCResult<string> InsertCategories(Categories model)
-        {
-            var result = new MVCResult<string>();
-            try
-            {
-                using (NorthWindEntities entity = new NorthWindEntities())
-                {
-                    entity.Categories.Add(model);
-                    result.SetSuccess(entity.SaveChanges());
-                    return result;
-                }
-            }
-            catch(Exception ex)
-            {
-                result.SetError(ex.Message);
-                return result;
-            }
-        }
-
-        [HttpPost]
-        public MVCResult<string> UpdateCategories(Categories model)
-        {
-            var result = new MVCResult<string>();
-            try
-            {
-                using (NorthWindEntities entity = new NorthWindEntities())
-                {
-                    entity.Entry(model).State = System.Data.Entity.EntityState.Modified;
-                    result.SetSuccess(entity.SaveChanges());
-                    return result;
-                }
-            }
-            catch (Exception ex)
-            {
-                result.SetError(ex.Message);
-                return result;
-            }
-        }
-
-        [HttpPost]
-        public MVCResult<string> DeleteCategories(int categoryId)
-        {
-            var result = new MVCResult<string>();
-            try
-            {
-                using (NorthWindEntities entity = new NorthWindEntities())
-                {
-                    Categories model = entity.Categories.Find(categoryId);
-                    entity.Categories.Remove(model);
-                    result.SetSuccess(entity.SaveChanges());
-                    return result;
-                }
-            }
-            catch (Exception ex)
-            {
-                result.SetError(ex.Message);
-                return result;
-            }
-        }
-
     }
+
 }

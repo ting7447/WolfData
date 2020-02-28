@@ -26,10 +26,27 @@ namespace WebRole1.Lib
         /// </summary>
         public List<T> PayLoad { get; set; }
 
-        public void SetSuccess(int count)
+        public void SetSuccess(int count, SQLType type)
         {
             IsSuccess = true;
-            ReturnMessage = string.Format("影響資料筆數：{0}", count);
+            string title = "";
+            switch(type)
+            {
+                case SQLType.Select:
+                    title = "回傳";
+                    break;
+                case SQLType.Insert:
+                    title = "新增";
+                    break;
+                case SQLType.Update:
+                    title = "修改";
+                    break;
+                case SQLType.Delete:
+                    title = "刪除";
+                    break;
+            }
+
+            ReturnMessage = string.Format("{0}資料筆數：{1}", title, count);
         }
         /// <summary>
         /// 設定錯誤

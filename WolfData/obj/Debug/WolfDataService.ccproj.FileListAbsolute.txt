@@ -150,3 +150,4 @@ C:\Users\ting\source\repos\WolfData\WolfData\obj\Debug\WebRole1\bin\Swashbuckle.
 C:\Users\ting\source\repos\WolfData\WolfData\obj\Debug\WebRole1\bin\WebActivatorEx.dll
 C:\Users\ting\source\repos\WolfData\WolfData\obj\Debug\WebRole1\bin\zh-Hant\EntityFramework.resources.dll
 C:\Users\ting\source\repos\WolfData\WolfData\obj\Debug\WebRole1\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\Users\ting\source\repos\WolfData\WolfData\obj\Debug\WebRole1\bin\System.Linq.Dynamic.dll

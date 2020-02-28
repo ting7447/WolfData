@@ -150,3 +150,5 @@ C:\Users\ting\source\repos\WolfData\WebRole1\bin\EntityFramework.xml
 C:\Users\ting\source\repos\WolfData\WebRole1\bin\EntityFramework.SqlServer.xml
 C:\Users\ting\source\repos\WolfData\WebRole1\bin\zh-Hant\EntityFramework.resources.dll
 C:\Users\ting\source\repos\WolfData\WebRole1\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\Users\ting\source\repos\WolfData\WebRole1\bin\System.Linq.Dynamic.dll
+C:\Users\ting\source\repos\WolfData\WebRole1\obj\Debug\WebRole1.csprojAssemblyReference.cache

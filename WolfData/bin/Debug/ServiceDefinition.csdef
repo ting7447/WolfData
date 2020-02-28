@@ -27,12 +27,6 @@
       <Content destination=".\">
         <SourceDirectory path="C:\Users\ting\source\repos\WolfData\WolfData\rcf\Debug\WebRole1Content\" />
       </Content>
-      <Content destination=".\">
-        <SourceDirectory path="C:\Users\ting\source\repos\WolfData\WolfData\ecf\WebRole1Content\" />
-      </Content>
     </Contents>
-    <Imports>
-      <Import moduleName="Diagnostics" />
-    </Imports>
   </WebRole>
 </ServiceDefinition>
