@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using WebRole1.Lib;
 using WebRole1.Models;
+using Newtonsoft.Json;
 
 namespace WebRole1.Controllers
 {
@@ -16,7 +17,8 @@ namespace WebRole1.Controllers
             [HttpPost]
             public MVCResult<Orders> GetOrders(Orders Orders)
             {
-                return CRUD<Orders>.Get(Orders);
+                MVCResult<Orders> orders = CRUD<Orders>.Get(Orders);
+                return orders;
             }
 
             [HttpPost]
@@ -36,6 +38,7 @@ namespace WebRole1.Controllers
             {
                 return CRUD<Orders>.Delete(model);
             }
+
         }
     }
 

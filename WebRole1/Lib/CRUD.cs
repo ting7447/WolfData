@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Web;
 using WebRole1.Models;
 using System.Linq.Dynamic;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebRole1.Lib
 {
@@ -30,19 +31,38 @@ namespace WebRole1.Lib
                 
                 string keyId = "";
                 string sqlstring = "1 = 1 ";
-                foreach(var pi in pis)
+
+                foreach (var pi in pis)
                 {
-                    if(!string.IsNullOrEmpty(pi.Name) && 
-                        pi.Name.Contains("ID"))
+                    //判斷attribute是否為key
+                    var keyAttribute =   
+                        Attribute.GetCustomAttribute(
+                            pi, 
+                            typeof(KeyAttribute)
+                        ) as KeyAttribute;
+
+                    if (!string.IsNullOrEmpty(pi.Name) &&
+                        keyAttribute != null)
                     {
                         keyId = pi.Name;
                         if (model != null)
                         {
-                            var columnValue = model.GetType().GetProperty(keyId).GetValue(model).ToString();
-                            if (!string.IsNullOrEmpty(columnValue))
+                            object objVal = model.GetType().GetProperty(keyId).GetValue(model);
+                            if(objVal != null)
                             {
-                                sqlstring += "AND " + keyId + " = " + columnValue;
+                                var columnValue = model.GetType().GetProperty(keyId).GetValue(model).ToString();
+                                string datatype = model.GetType().GetProperty(keyId).PropertyType.Name;
+                                if (!string.IsNullOrEmpty(columnValue))
+                                {
+                                    sqlstring += " AND " + keyId + " = ";
+                                    if (datatype == "String")
+                                        sqlstring += "'";
+                                    sqlstring += columnValue ;
+                                    if (datatype == "String")
+                                        sqlstring += "'";
+                                }
                             }
+
                         }
                     }
                 }
@@ -116,15 +136,16 @@ namespace WebRole1.Lib
         /// </summary>
         /// <param name="Id"></param>
         /// <returns></returns>
-        public static MVCResult<string> Delete(object Id)
+        public static MVCResult<string> Delete(T model)
         {
             var result = new MVCResult<string>();
             try
             {
                 using (NorthWindEntities entity = new NorthWindEntities())
                 {
-                    T obj = entity.Set<T>().Find(Id);
-                    entity.Set<T>().Remove(obj);
+                    //T obj = entity.Set<T>().Find(model);
+                    entity.Entry(model).State = System.Data.Entity.EntityState.Deleted;
+                    entity.Set<T>().Remove(model);
                     result.SetSuccess(entity.SaveChanges(),SQLType.Delete);
                     return result;
                 }

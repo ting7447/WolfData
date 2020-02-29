@@ -32,9 +32,9 @@ namespace WebRole1.Controllers
             }
 
             [HttpPost]
-            public MVCResult<string> DeleteCategories(int categoryId)
+            public MVCResult<string> DeleteCategories(Categories model)
             {
-                return CRUD<Categories>.Delete(categoryId);
+                return CRUD<Categories>.Delete(model);
             }
         }
     }

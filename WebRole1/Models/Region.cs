@@ -9,9 +9,11 @@
 
 namespace WebRole1.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Region
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +21,12 @@ namespace WebRole1.Models
         {
             this.Territories = new HashSet<Territories>();
         }
-    
+        [Key]
         public int RegionID { get; set; }
         public string RegionDescription { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<Territories> Territories { get; set; }
     }
 }

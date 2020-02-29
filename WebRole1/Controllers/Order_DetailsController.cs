@@ -36,6 +36,33 @@ namespace WebRole1.Controllers
             {
                 return CRUD<Order_Details>.Delete(model);
             }
+
+            /// <summary>
+            /// 使用CustomId選取訂單明細內容
+            /// </summary>
+            /// <param name="customer"></param>
+            /// <returns></returns>
+            [HttpPost]
+            public MVCResult<Order_Details> GetOrderDetailByCustomerId(Customers customer)
+            {
+                MVCResult<Order_Details> result = new MVCResult<Order_Details>();
+                result.PayLoad = new List<Order_Details>();
+                try
+                {
+                    NorthWindEntities entity = new NorthWindEntities();
+                    List<Order_Details> orderDetailList = entity.Order_Details.Where(x => x.Orders.CustomerID == customer.CustomerID).ToList();
+
+                    result.PayLoad = orderDetailList;
+                    result.SetSuccess(orderDetailList.Count(), SQLType.Select);
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    result.SetError(ex.Message);
+                    return result;
+                }
+            }
+
         }
     }
 

@@ -9,9 +9,11 @@
 
 namespace WebRole1.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Products
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,10 +21,12 @@ namespace WebRole1.Models
         {
             this.Order_Details = new HashSet<Order_Details>();
         }
-    
+        [Key]
         public int ProductID { get; set; }
         public string ProductName { get; set; }
         public Nullable<int> SupplierID { get; set; }
+
+        [Key]
         public Nullable<int> CategoryID { get; set; }
         public string QuantityPerUnit { get; set; }
         public Nullable<decimal> UnitPrice { get; set; }
@@ -33,6 +37,7 @@ namespace WebRole1.Models
     
         public virtual Categories Categories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<Order_Details> Order_Details { get; set; }
         public virtual Suppliers Suppliers { get; set; }
     }

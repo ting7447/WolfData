@@ -9,9 +9,11 @@
 
 namespace WebRole1.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Shippers
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +21,11 @@ namespace WebRole1.Models
         {
             this.Orders = new HashSet<Orders>();
         }
-    
+        [Key]
         public int ShipperID { get; set; }
         public string CompanyName { get; set; }
         public string Phone { get; set; }
-    
+        [JsonIgnore]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Orders> Orders { get; set; }
     }

@@ -12,14 +12,15 @@ namespace WebRole1.Models
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Categories
     {
         public Categories()
         {
             this.Products = new HashSet<Products>();
         }
-    
+        [Key]
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }
         public string Description { get; set; }

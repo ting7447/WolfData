@@ -9,9 +9,11 @@
 
 namespace WebRole1.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Employees
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +23,7 @@ namespace WebRole1.Models
             this.Orders = new HashSet<Orders>();
             this.Territories = new HashSet<Territories>();
         }
-    
+        [Key]
         public int EmployeeID { get; set; }
         public string LastName { get; set; }
         public string FirstName { get; set; }
@@ -42,11 +44,14 @@ namespace WebRole1.Models
         public string PhotoPath { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<Employees> Employees1 { get; set; }
         public virtual Employees Employees2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<Orders> Orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<Territories> Territories { get; set; }
     }
 }
